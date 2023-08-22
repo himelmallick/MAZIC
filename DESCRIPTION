@@ -2,10 +2,10 @@ Package: MAZIC
 Title: Marginalized Zero-Inflated Count Models with L1 Regularization 
 Version: 0.0.1
 Authors@R: 
-c(person("Prithish", "Banerjee", email = "prithish.banerjee@gmail.com", role = c("aut", "cre")), 
-person("Suvo", "Chatterjee", email = "suvchat@iu.edu", role = c("aut", "cre")), 
-person("Arinjita", "Bhattacharyya", email = "arinjita.bhattacharyya@merck.com", role = c("aut", "cre")), 
-person("Himel", "Mallick", email = "him4004@med.cornell.edu", role = c("aut", "cre")))      
+Authors@R: c(
+  person("Prithish", "Banerjee", email = "prithish.banerjee@gmail.com", role = c("aut", "cre")), 
+  person("Suvo", "Chatterjee", email = "suvchat@iu.edu", role = c("aut"))
+  )    
 Description: Algorithms for fitting zero-inflated penalized coefficient paths for both zero-inflated Poisson and zero-inflated negative binomial marginalized regression models
 License: MIT
 Encoding: UTF-8
