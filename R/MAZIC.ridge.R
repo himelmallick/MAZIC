@@ -74,9 +74,9 @@ MAZIC.ridge = function(y, x, startVals, opt.method = c('Nelder-Mead', 'BFGS'),
   names(mles) = rownames(resTable)
   
   if(verbose){
-    message('Snapshot of the MLE estimates')
+    message('Snapshot of the Ridge estimates')
     print(mles)
-    message('Snapshot of the variance covariance matrix of MLE estimates')
+    message('Snapshot of the variance covariance matrix of Ridge estimates')
     print(vcov[1:5, 1:5])
   }
   
