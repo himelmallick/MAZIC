@@ -11,6 +11,6 @@ Authors@R: c(
 Description: Algorithms for fitting zero-inflated penalized coefficient paths for both zero-inflated Poisson and zero-inflated negative binomial marginalized regression models
 License: MIT
 Encoding: UTF-8
-Imports: haven, pscl, zic, MASS, VGAM, expm, stringr, grpreg
+Imports: haven, pscl, zic, MASS, VGAM, expm, stringr, grpreg, glmnet
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
