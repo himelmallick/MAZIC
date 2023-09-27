@@ -93,18 +93,18 @@ MAZIC.L1 = function(data, formula, startVals = TRUE, opt.method = c('Nelder-Mead
   # aic = -2*tLL+2*k
   # bic = log(n)*k - tLL
   
-  tLL <- -deviance(fit) # 2*log-likelihood
-  k <- dim(model.matrix(fit))[2]
-  n <- nobs(fit)
-  aicc <- -tLL+2*k+2*k*(k+1)/(n-k-1)
-  aic <- -tLL+2*k
+  tLL = -deviance(fit) # 2*log-likelihood
+  k = dim(model.matrix(fit))[2]
+  n = nobs(fit)
+  aicc = -tLL+2*k+2*k*(k+1)/(n-k-1)
+  aic = -tLL+2*k
   
-  bic <- log(n)*k - tLL
-  
+  bic = log(n)*k - tLL
+  print('Done BIC')
   #### Giving Back Intercept Terms ####
   
   coef = as.data.frame(coef)
-  coef = coef[!rownames(coef) %in% '(Intercept)',, drop = FALSE]
+  coef = coef[!rownames(coef) %in% '(Intercept)', , drop = FALSE]
   tmp = sigma.12 %*% solve(sigma.22) %*% (beta - as.vector(coef$Penalized.Estimates))
   coef.zero = coef[grep('zero', rownames(coef)), , drop = FALSE]
   coef.mean = coef[grep('mean', rownames(coef)), , drop = FALSE]
@@ -113,7 +113,8 @@ MAZIC.L1 = function(data, formula, startVals = TRUE, opt.method = c('Nelder-Mead
   Penalized.Coeff.mean = c(tmp[2, 1], coef.mean$Penalized.Estimates)
   names(Penalized.Coeff.mean)[2:length(Penalized.Coeff.mean)] = rownames(coef.mean)
   All.Penalized.Coeffs = list(zero = Penalized.Coeff.zero, mean = Penalized.Coeff.mean)
-  
+
+  print('Done Calculation')
   if(verbose){
     message('Snapshot of Penalized Coefficients (using glmnet) for variables in zero part')
     print(Penalized.Coeff.zero)
