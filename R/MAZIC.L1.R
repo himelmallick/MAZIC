@@ -81,6 +81,7 @@ MAZIC.L1 = function(data, formula, startVals = TRUE, opt.method = c('Nelder-Mead
   
   fitlass = cv.glmnet(cov.star, y.star)
   lam = fitlass$lambda.min
+  print(lam)
   fit = glmnet(cov.star, y.star, lambda = lam)
   #### Collecting Penalized Results ####
   
