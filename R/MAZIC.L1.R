@@ -79,9 +79,9 @@ MAZIC.L1 = function(data, formula, startVals = TRUE, opt.method = c('Nelder-Mead
   
   #### Fitting Penalty Model ####
   
-  fitlass = glmnet::cv.glmnet(cov.star, y.star)
+  fitlass = cv.glmnet(cov.star, y.star)
   lam = fitlass$lambda.min
-  fit = glmnet::glmnet(cov.star, y.star, lambda = lam)
+  fit = glmnet(cov.star, y.star, lambda = lam)
   #### Collecting Penalized Results ####
   
   coef = as.matrix(coef(fit, s = lam))
