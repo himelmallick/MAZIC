@@ -88,9 +88,9 @@ MAZIC.L1 = function(data, formula, startVals = TRUE, opt.method = c('Nelder-Mead
   coef = as.matrix(coef(fit, s = lam))
   colnames(coef) = 'Penalized.Estimates'
   print(coef)
-  tLL = fitlass$nulldev - deviance(fitlass)
-  k = fitlass$df
-  n = fitlass$nobs
+  tLL = fit$nulldev - deviance(fit)
+  k = fit$df
+  n = fit$nobs
   aic = -2*tLL+2*k
   bic = log(n)*k - tLL
   
