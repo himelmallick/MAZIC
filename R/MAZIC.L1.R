@@ -63,7 +63,7 @@ MAZIC.L1 = function(data, formula, startVals = TRUE, opt.method = c('Nelder-Mead
   } else {
     cov.star=e$vectors%*%diag(1/sqrt(makePD(Sigma)))%*%t(e$vectors)
   }
-  cov.star = as.matrix(sqrt(cov.star))
+  cov.star = as.matrix(sqrtm(cov.star))
   cov.star = scale(cov.star)
   y.star = as.vector(cov.star%*%beta)
   y.star = y.star - mean(y.star)
