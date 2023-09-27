@@ -88,19 +88,19 @@ MAZIC.L1 = function(data, formula, startVals = TRUE, opt.method = c('Nelder-Mead
   coef = as.matrix(coef(fit, s = lam))
   colnames(coef) = 'Penalized.Estimates'
   print(coef)
-  # tLL = fitlass$nulldev - deviance(fitlass)
-  # k = fitlass$df
-  # n = fitlass$nobs
-  # aic = -2*tLL+2*k
-  # bic = log(n)*k - tLL
-  
-  tLL = -deviance(fit) # 2*log-likelihood
-  k = dim(model.matrix(fit))[2]
-  n = nobs(fit)
-  aicc = -tLL+2*k+2*k*(k+1)/(n-k-1)
-  aic = -tLL+2*k
-  
+  tLL = fitlass$nulldev - deviance(fitlass)
+  k = fitlass$df
+  n = fitlass$nobs
+  aic = -2*tLL+2*k
   bic = log(n)*k - tLL
+  
+  # tLL = -deviance(fit) # 2*log-likelihood
+  # k = dim(model.matrix(fit))[2]
+  # n = nobs(fit)
+  # aicc = -tLL+2*k+2*k*(k+1)/(n-k-1)
+  # aic = -tLL+2*k
+  
+  # bic = log(n)*k - tLL
   print('Done BIC')
   #### Giving Back Intercept Terms ####
   
@@ -131,7 +131,7 @@ MAZIC.L1 = function(data, formula, startVals = TRUE, opt.method = c('Nelder-Mead
   
   #### Giving Back Intercept Terms ####
   
-  fintab = list(Penalized.Coeff.estimates = All.Penalized.Coeffs, aic = aic, aicc = aicc, bic = bic, 
+  fintab = list(Penalized.Coeff.estimates = All.Penalized.Coeffs, aic = aic, bic = bic, 
                 loglik = tLL)
   return(fintab)
 }
