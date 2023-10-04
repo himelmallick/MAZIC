@@ -9,7 +9,7 @@
 #' @export
 
 MAZIC.L1 = function(data, formula, startVals = TRUE, opt.method = c('Nelder-Mead', 'BFGS'),
-                    mod = c("marzip","marzinb","marzigp"), verbose = TRUE)
+                    mod = c("marzip","marzinb","marzigp"), nfolds = 10, verbose = TRUE)
 {
   
   #### Obtain response variable and design matrix ####
@@ -78,8 +78,12 @@ MAZIC.L1 = function(data, formula, startVals = TRUE, opt.method = c('Nelder-Mead
   }
   
   #### Fitting Penalty Model ####
+  # Use Pre-computed Folds # THIS ENSURES THAT THE RESULTS ARE NOT RANDOM
+  foldid <- sample(rep(seq(nfolds), length.out = nrow(cov.star)))
+
+
   
-  fitlass = cv.glmnet(cov.star, y.star)
+  fitlass = cv.glmnet(cov.star, y.star, nfolds=nfolds, foldid = foldid)
   lam = fitlass$lambda.min
   print(lam)
   fit = glmnet(cov.star, y.star, lambda = lam)
