@@ -13,7 +13,8 @@ MAZIC.L1 = function(data, formula, startVals = TRUE, opt.method = c('Nelder-Mead
 {
   
   #### Obtain response variable and design matrix ####
-  
+  set.seed(100)
+
   regData = orgMetadata(data = data, formula = formula)
   y = regData$y
   covs = regData$design
